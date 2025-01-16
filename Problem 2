@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int sumofdigits(int n) {
+    if (n == 0) {
+        return 0;
+    }
+    return n % 10 + sumofdigits(n / 10);
+}
+
+int main() {
+    // WITH RECURSION
+    int n; // a five-digit number
+    printf("INPUT DESIRED NUMBER: ");
+    scanf("%d", &n);
+
+    // Check if the number is a 5-digit number
+    if (n >= 10000 && n <= 99999) {
+        printf("THE SUM OF DIGITS ARE: %d \n", sumofdigits(n));
+    } else {
+        printf("RE-ENTER NUMBER\n");
+    }
+
+    return 0;
+}
