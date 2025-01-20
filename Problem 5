@@ -1,0 +1,30 @@
+#include <stdio.h>
+void primefactors(int n, int d) {
+    if (n == 1) {
+        return;
+    }
+    if (n % d == 0) {
+        printf("%d ", d);
+        primefactors(n / d, d);  
+        
+    }
+    else {
+        primefactors(n, (d + 1));
+    }
+}
+
+int main() {
+    int n;
+    printf("Enter a positive integer: ");
+    scanf("%d", &n);
+
+    if (n <= 0) {
+        printf("Please enter a positive integer.\n");
+    } 
+    else {
+        printf("Prime factors of %d are: ", n);
+        primefactors(n, 2);  
+    }
+
+    return 0;
+}
