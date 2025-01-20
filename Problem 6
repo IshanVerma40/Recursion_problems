@@ -1,0 +1,25 @@
+#include <stdio.h>
+ 
+int binaryconversion(int);
+int binaryconversion(int num){
+
+    if (num == 0)
+    {
+        return 0;
+    }
+    else
+    {
+        return (num % 2) + 10 * binaryconversion(num / 2);
+    }
+}
+ 
+int main(){
+
+   int num, bin;
+ 
+   printf("Enter a decimal number: ");
+   scanf("%d", &num);
+   bin = binaryconversion(num);
+   printf("The binary equivalent of %d is %d\n", num, bin);
+   return 0;
+}
