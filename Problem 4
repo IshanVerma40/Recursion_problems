@@ -1,0 +1,30 @@
+#include<stdio.h>
+ 
+void towerofhanoi(int n, char s, char h, char d){
+    if(n==0) 
+    return;
+    towerofhanoi(n-1,s,d,h);
+    printf("%c --> %c \n",s,d);
+    towerofhanoi(n-1,h,s,d);
+    return;
+}
+ int numberofsteps(int a, int n){
+    if(n==0) 
+    return 1;
+    
+    int pow = 2*numberofsteps(a, n-1);
+    return pow;
+ }
+int main(){
+    int n;
+    int steps=n;
+    
+    int a=2;
+    printf("Enter the Number of disk: ");
+    scanf("%d",&n);
+    towerofhanoi(n,'A','B','C');
+    
+    int ans=numberofsteps( a,n)  ;
+    printf("Number of steps taken: %d \n", ans-1);
+    return 0;
+}
