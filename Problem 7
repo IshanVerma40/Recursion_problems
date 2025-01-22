@@ -1,42 +1,36 @@
-#include <iostream>
-using namespace std;
+#include<stdio.h>
 
-void timetaken(int currentheight,int x,int y,int z,float time) {
+float monkey(float z, float x, float y) {
+	float net_distance = x-y;
+	float distance = z-net_distance;
 
-	if(currentheight>=z)//BASE CASE
-		return time;
 
-	currentheight=currentheight+x;
-	time++;
+	if(distance <net_distance) {
+		return (((float)2)/3)*distance;
+	}
+	else {
+		return monkey(distance, x,y)+2.0;
 
-	if(currentheight>=z)
-		time+=(z-currentheight)/x;
-	return time;
+	}
 
-	currentheight=currentheight-y;
-	time++;
-
-	return timetaken(currentheight,x,y,z,time);
 }
+
+
 int main() {
-	int currentheight=0;
-	int z;//POLE HEIGHT
-	cout<<"ENTER POLE HEIGHT:-->";
-	cin>>z;
-	int x;//SPEED AT WHICH MONKEY RIDE
-	cout<<"ENTER SPEED PER MIN AT WHICH IT CLIMBS :-->";
-	cin>>x;
-	int y;//SLIPPING SPEED
-	cout<<"ENTER SPEED PER MIN AT WHICH IT SLIPS DOWN :-->";
-	cin>>y;
+	float z, x, y;
+	printf("Enter the height of pole: ");
+	scanf("%f",&z);
 
-	float time=0;
-	float a;
-	a=timetaken(currentheight,x,y,z,time)
+	printf("Enter the distance that monkey covers in 1 minute: ");
+	scanf("%f",&x);
 
-	  cout<<"the time taken:-->%f"<<
+	printf("Enter the distance that monkey slips down by in next minute: ");
+	scanf("%f",&y);
 
+	printf("The time taken for moneky to climb is %f",monkey(z,x,y));
 
-
-	  return 0;
+	return 0;
 }
+
+
+
